@@ -1,0 +1,46 @@
+/* SignUp.module.css */
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .container label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container input {
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 5px;
+    border: 2px solid rgb(157, 154, 154);
+  }
+
+  .container input:focus{
+    outline: none;
+  }
+  
+  .container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .container button:hover {
+    background-color: #0056b3;
+  }
+  
