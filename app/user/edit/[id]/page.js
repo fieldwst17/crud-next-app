@@ -1,44 +1,45 @@
-"use client";
-import { useState, useEffect } from "react";
+'use client'
+import { useState,useEffect } from "react";
 import styles from "@/app/SignUp.module.css";
 
-export default function page({ params }) {
-  const [user, setUser] = useState({
-    id: 0,
-    fname: "",
-    lname: "",
-    username: "",
-    email: "",
-    avatar: "",
-  });
+export default function Page({ params }) {
 
-  useEffect(() => {
-    fetch("https://www.melivecode.com/api/users/" + params.id)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        setUser(result.user);
-      });
-  }, []);
+    const [user, setUser] = useState({
+        "id": 0,
+        "fname": "",
+        "lname": "",
+        "username": "",
+        "email": "",
+        "avatar": ""
+    });
+// eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        fetch('https://www.melivecode.com/api/users/'+params.id)
+        .then(res => res.json())
+        .then(result =>{
+            console.log(result);
+            setUser(result.user)
+        })
+    }, [params.id]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(user);
-    fetch(" https://www.melivecode.com/api/users/update", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        alert(result.message);
-        if (result.status === "ok") {
-          window.location.href = "/user";
-        }
-      });
-  };
+    const handleSubmit =(e)=>{
+        e.preventDefault()
+        console.log(user);
+        fetch(' https://www.melivecode.com/api/users/update',{
+         method: 'PUT',
+         headers: {
+            'Content-Type': 'application/json', 
+         },
+         body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(result=>{
+            alert(result.message)
+            if(result.status === 'ok') {
+                window.location.href = '/user'
+            }
+            })
+    }
 
   return (
     <div className={styles.container}>
@@ -53,11 +54,12 @@ export default function page({ params }) {
             placeholder="username"
             value={user.username}
             onChange={(e) => {
-              setUser((user) => ({
-                ...user,
-                username: e.target.value,
-              }));
+                setUser((user) => ({
+                    ...user,
+                    username:e.target.value
+                }))
             }}
+
           />
         </label>
         <label>
@@ -69,10 +71,10 @@ export default function page({ params }) {
             placeholder="first name"
             value={user.fname}
             onChange={(e) => {
-              setUser((user) => ({
-                ...user,
-                fname: e.target.value,
-              }));
+                setUser((user) => ({
+                    ...user,
+                    fname:e.target.value
+                }))
             }}
           />
         </label>
@@ -85,15 +87,16 @@ export default function page({ params }) {
             placeholder="last name"
             value={user.lname}
             onChange={(e) => {
-              setUser((user) => ({
-                ...user,
-                lname: e.target.value,
-              }));
+                setUser((user) => ({
+                    ...user,
+                    lname:e.target.value
+                }))
             }}
+
           />
         </label>
         <button type="submit">ยืนยัน</button>
       </form>
     </div>
-  );
+  )
 }

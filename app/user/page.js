@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Styles from "@/app/page.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Page() {
   const [users, setUsers] = useState([]);
@@ -42,7 +43,7 @@ export default function Page() {
         <ul>
           {users.map((user) => (
             <li key={user.id}>
-              <img src={user.avatar} width={50} height={50} />
+              <Image src={user.avatar} alt={user.username} width={50} height={50} />
               <div>
                 <h2>
                   {user.fname} {user.lname}

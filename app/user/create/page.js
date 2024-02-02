@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import styles from "@/app/SignUp.module.css";
-export default function page() {
+export default function Page() {
 
     // กดสร้าง user
   const handelSubmit = (e)=> {
